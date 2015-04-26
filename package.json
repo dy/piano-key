@@ -1,0 +1,26 @@
+{
+  "name": "piano-key",
+  "version": "1.0.0",
+  "description": "Piano keys frequencies",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "files": ["index.js"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dfcreative/piano-keys"
+  },
+  "keywords": [
+    "piano",
+    "midi",
+    "music",
+    "audio"
+  ],
+  "author": "Deema Ywanov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dfcreative/piano-keys/issues"
+  },
+  "homepage": "https://github.com/dfcreative/piano-keys"
+}
