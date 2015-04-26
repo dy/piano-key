@@ -17,4 +17,4 @@ key.name(49) //'A4'
 ```
 
 
-[![NPM](https://nodei.co/npm/emmy.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/emmy/)
+[![NPM](https://nodei.co/npm/piano-key.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/piano-key/)
