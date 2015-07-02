@@ -8,10 +8,13 @@ Tools for working with [piano keys and frequencies](http://en.wikipedia.org/wiki
 ```js
 var key = require('piano-key');
 
-key.getName(number);			//
-key.getFrequency(number|name)	//440
-key.getOctave(number)			//[12,14,15,16,167]
-key.getNumber(name|frequency)	//
+key.getName(49);				//A4
+key.getFrequency(49);			//440
+key.getFrequency('A4');			//440
+key.getNumber('A4');			//49
+key.getNumber(440);				//49
+key.getOctave(49);				//4
 
-key.isBlack(number);			//false
+key.isBlack(49);				//false
+key.isBlack(48);				//true
 ```

@@ -11,6 +11,9 @@ assert(key.getName(88) === 'C8');
 assert(key.getName(1) === 'A0');
 assert(key.getName(4) === 'C1');
 
+assert(key.getOctave('A4') === 4);
+assert(key.getOctave(49) === 4);
+
 assert(key.isBlack(29));
 assert(key.isBlack('g#4'));
 assert(!key.isBlack('g4'));
