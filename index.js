@@ -1,42 +1,73 @@
 /**
- * List of frequencies for piano keys
+ * List of frequencies for piano key
+ * @module  piano-key
  */
 
+
 /** Note frequencies dict */
-var keys = {};
+var key = {};
 
 
-var notes = 'A A# B C C# D D# E F F# G G#'.split(' ');
+/** Get name for a number */
+key.getName = function (number) {
+	return key.notes[(number - 1) % 12] + Math.round((number + 3) / 12);
+};
 
-notes.forEach(function (note, i) {
-	var noteOctaves = [];
 
-	for (var octave = 0, noteNumber; octave < 10; octave++) {
-		noteNumber = octave*12 + i + 1;
-		//keys[49] === keys['A4'] === keys['A'][4] === 440
-		keys[noteNumber] = keys[note + octave] = noteOctaves[octave] = f(noteNumber);
+/** Get frequency for a number */
+key.getFrequency = function (number) {
+	if (typeof number === 'string') {
+		number = key.getNumberFromName(number);
 	}
 
-	keys[note] = noteOctaves;
-});
+	return Math.pow(2, (number - 49)/12) * 440;
+};
 
-keys.frequency = f;
-keys.number = n;
-keys.name = nn;
 
-/** Get frequency from note number */
-function f (n) {
-	return Math.pow(2, (n-49)/12) * 440;
-}
+/** Get number for a name */
+key.getNumber = function (frequency) {
+	if (typeof frequency === 'string') {
+		return key.getNumberFromName(frequency);
+	}
 
-/** Get note number from frequency */
-function n (f) {
-	return 12 * Math.log(f/440)/Math.log(2) + 49;
-}
+	return 12 * Math.log(frequency / 440)/Math.log(2) + 49;
+};
 
-/** Get note name from note number */
-function nn (n) {
-	return notes[(n - 1) % 12] + Math.round((n + 3) / 12);
-}
 
-module.exports = keys;
+/** Get note number from note name */
+key.getNumberFromName = function (name) {
+	var nameParts = /([a-z#]+)([0-9]+)/i.exec(name);
+
+	//default octave is 0
+	var octave = nameParts[2] || 0;
+
+	//default note
+	var note = (nameParts[1] || 'A').toUpperCase();
+
+	var noteIdx = key.notes.indexOf(note);
+
+	if (noteIdx < 0) {
+		throw Error('Unknown note ' + name);
+	}
+
+	var noteNumber = octave * 12 + noteIdx + 1;
+
+	return noteNumber;
+};
+
+
+/** Test whether key number passed is black */
+key.isBlack = function (name) {
+	if (typeof name === 'number') {
+		name = key.getName(name);
+	}
+
+	return /#/.test(name);
+};
+
+
+/** List of note names */
+key.notes = 'A A# B C C# D D# E F F# G G#'.split(' ');
+
+
+module.exports = key;
