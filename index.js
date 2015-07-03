@@ -3,6 +3,8 @@
  * @module  piano-key
  */
 
+var loop = require('mumath/loop')
+
 
 /** Note frequencies dict */
 var key = {};
@@ -10,7 +12,7 @@ var key = {};
 
 /** Get name for a number */
 key.getName = function (number) {
-	return key.notes[(number - 1) % 12] + Math.round((number + 3) / 12);
+	return key.notes[loop(number - 4, 12)] + Math.round((number + 3) / 12);
 };
 
 
@@ -20,7 +22,7 @@ key.getFrequency = function (number) {
 		number = key.getNumberFromName(number);
 	}
 
-	return Math.pow(2, (number - 49)/12) * 440;
+	return Math.pow(2, (number - 49) / 12) * 440;
 };
 
 
@@ -30,7 +32,7 @@ key.getNumber = function (frequency) {
 		return key.getNumberFromName(frequency);
 	}
 
-	return 12 * Math.log(frequency / 440)/Math.log(2) + 49;
+	return 12 * Math.log(frequency / 440) / Math.log(2) + 49;
 };
 
 
@@ -49,7 +51,7 @@ key.getNumberFromName = function (name) {
 		throw Error('Unknown note ' + name);
 	}
 
-	var noteNumber = octave * 12 + noteIdx + 1;
+	var noteNumber = (octave - 1) * 12 + noteIdx + 4;
 
 	return noteNumber;
 };
@@ -84,7 +86,7 @@ key.getOctave = function (name) {
 
 
 /** List of note names */
-key.notes = 'A A# B C C# D D# E F F# G G#'.split(' ');
+key.notes = 'C C# D D# E F F# G G# A A# B'.split(' ');
 
 
 module.exports = key;

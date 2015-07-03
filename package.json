@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/dfcreative/piano-keys/issues"
   },
-  "homepage": "https://github.com/dfcreative/piano-keys"
+  "homepage": "https://github.com/dfcreative/piano-keys",
+  "dependencies": {
+    "mumath": "^1.0.2"
+  }
 }
