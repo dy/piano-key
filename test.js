@@ -7,7 +7,14 @@ assert(key.getFrequency(49) === 440);
 assert(key.getNumber(440) === 49);
 
 assert(key.getOctave('A4') === 4);
+assert(key.getOctave('A#4') === 4);
 assert(key.getOctave(49) === 4);
+assert(key.getOctave(50) === 4);
+
+assert(key.getNote('A4') === 'A');
+assert(key.getNote('A#4') === 'A#');
+assert(key.getNote(49) === 'A');
+assert(key.getNote(50) === 'A#');
 
 assert(key.isBlack(29));
 assert(key.isBlack('g#4'));

@@ -38,9 +38,7 @@ key.getNumber = function (frequency) {
 
 /** Get note number from note name */
 key.getNumberFromName = function (name) {
-	var note = /[a-z#]+/i.exec(name);
-
-	note = (note.length ? note[0] : 'A').toUpperCase();
+	var note = key.getNote(name);
 
 	//default octave is 0
 	var octave = key.getOctave(name);
@@ -82,6 +80,20 @@ key.getOctave = function (name) {
 	else {
 		return 0;
 	}
+};
+
+
+/** Return note name from number/name */
+key.getNote = function (name) {
+	if (typeof name === 'number') {
+		name = key.getName(name);
+	}
+
+	var note = /[a-z#]+/i.exec(name);
+
+	note = (note.length ? note[0] : 'A').toUpperCase();
+
+	return note;
 };
 
 

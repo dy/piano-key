@@ -14,6 +14,8 @@ key.getFrequency('A4');			//440
 key.getNumber('A4');			//49
 key.getNumber(440);				//49
 key.getOctave(49);				//4
+key.getNote(50);				//A#
+key.getNote('A#4');				//A#
 
 key.isBlack(49);				//false
 key.isBlack(48);				//true
