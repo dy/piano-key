@@ -5,11 +5,17 @@ assert(key.getNumber('a4'))
 assert(key.getFrequency('A4') === 440);
 assert(key.getFrequency(49) === 440);
 assert(key.getNumber(440) === 49);
+assert(key.getName(40) === 'C4');
+assert(key.getName(39) === 'B3');
+assert(key.getName(28) === 'C3');
+assert(key.getName(27) === 'B2');
 
 assert(key.getOctave('A4') === 4);
 assert(key.getOctave('A#4') === 4);
 assert(key.getOctave(49) === 4);
 assert(key.getOctave(50) === 4);
+assert(key.getOctave(39) === 3);
+assert(key.getOctave(40) === 4);
 
 assert(key.getNote('A4') === 'A');
 assert(key.getNote('A#4') === 'A#');

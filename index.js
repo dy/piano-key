@@ -12,7 +12,7 @@ var key = {};
 
 /** Get name for a number */
 key.getName = function (number) {
-	return key.notes[loop(number - 4, 12)] + Math.round((number + 3) / 12);
+	return key.notes[loop(number - 4, 12)] + Math.round((number + 2) / 12);
 };
 
 
